@@ -1,0 +1,26 @@
+code,name,credits,department_code,semester,year
+"CSE001","Data Structures and Algorithms",4,"CSE",1,1
+"CSE002","Database Management Systems",3,"CSE",2,1
+"CSE003","Computer Networks",4,"CSE",3,2
+"CSE004","Operating Systems",2,"CSE",4,2
+"CSE005","Software Engineering",3,"CSE",5,3
+"ECE006","Digital Signal Processing",2,"ECE",1,1
+"ECE007","Microprocessors",3,"ECE",2,1
+"ECE008","VLSI Design",4,"ECE",3,2
+"ECE009","Communication Systems",4,"ECE",4,2
+"ECE010","Control Systems",4,"ECE",5,3
+"ME011","Thermodynamics",2,"ME",1,1
+"ME012","Fluid Mechanics",3,"ME",2,1
+"ME013","Machine Design",4,"ME",3,2
+"ME014","Manufacturing Processes",3,"ME",4,2
+"ME015","Heat Transfer",2,"ME",5,3
+"CE016","Structural Analysis",2,"CE",1,1
+"CE017","Concrete Technology",4,"CE",2,1
+"CE018","Geotechnical Engineering",4,"CE",3,2
+"CE019","Transportation Engineering",2,"CE",4,2
+"CE020","Environmental Engineering",3,"CE",5,3
+"IT021","Web Development",2,"IT",1,1
+"IT022","Mobile App Development",4,"IT",2,1
+"IT023","Cloud Computing",3,"IT",3,2
+"IT024","Cybersecurity",2,"IT",4,2
+"IT025","Data Analytics",3,"IT",5,3
