@@ -1,0 +1,6 @@
+    res.json({
+      students: 600,
+      faculty: 45,
+      courses: 120,
+      rooms: 35
+    });

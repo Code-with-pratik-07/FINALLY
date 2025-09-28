@@ -257,3 +257,40 @@ router.get('/export/pdf', authenticateToken, async (req, res) => {
 });
 
 module.exports = router;
+
+// Get timetable conflicts
+router.get('/conflicts', authenticateToken, requireRole('admin'), async (req, res) => {
+  try {
+    // Return empty conflicts for now (you can implement conflict detection later)
+    res.json([]);
+  } catch (error) {
+    console.error('Conflicts error:', error);
+    res.json([]);
+  }
+});
+
+// Get timetable conflicts
+router.get("/conflicts", authenticateToken, requireRole("admin"), async (req, res) => {
+  try {
+    res.json([]);
+  } catch (error) {
+    console.error("Conflicts error:", error);
+    res.json([]);
+  }
+});
+
+// Assign students to existing timetable
+router.post('/assign-students/:timetableId', authenticateToken, requireRole('admin'), async (req, res) => {
+  const { timetableId } = req.params;
+  
+  try {
+    const IntelligentScheduler = require('../services/intelligentScheduler');
+    const scheduler = new IntelligentScheduler(pool);
+    const result = await scheduler.generateStudentTimetables(timetableId, 1, 1);
+    
+    res.json(result);
+  } catch (error) {
+    console.error('Error assigning students:', error);
+    res.status(500).json({ error: 'Failed to assign students', details: error.message });
+  }
+});

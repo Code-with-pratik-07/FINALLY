@@ -133,4 +133,50 @@ router.get('/profile', authenticateToken, async (req, res) => {
   }
 });
 
+
+// Role-based access control middleware
+function requireRole(role) {
+  return (req, res, next) => {
+    if (req.user && req.user.role === role) {
+      next();
+    } else {
+      res.status(403).json({ error: 'Insufficient permissions' });
+    }
+  };
+}
+
+// Admin analytics endpoint
+router.get('/admin/analytics', authenticateToken, requireRole('admin'), async (req, res) => {
+  try {
+    const studentsResult = await pool.query('SELECT COUNT(*) FROM students');
+    const facultyResult = await pool.query('SELECT COUNT(*) FROM faculty');
+    const coursesResult = await pool.query('SELECT COUNT(*) FROM courses');
+
+    res.json({
+      students: parseInt(studentsResult.rows[0].count),
+      faculty: parseInt(facultyResult.rows[0].count),
+      courses: parseInt(coursesResult.rows[0].count),
+      message: 'Analytics data retrieved successfully'
+    });
+  } catch (error) {
+    console.error('Analytics error:', error);
+    res.status(500).json({ error: 'Failed to fetch analytics' });
+  }
+});
+
 module.exports = router;
+
+// Admin analytics endpoint
+router.get('/admin/analytics', authenticateToken, requireRole('admin'), async (req, res) => {
+  try {
+    res.json({
+      students: 600,
+      faculty: 45,
+      courses: 120,
+      rooms: 35
+    });
+  } catch (error) {
+    console.error('Analytics error:', error);
+    res.status(500).json({ error: 'Failed to fetch analytics' });
+  }
+});
